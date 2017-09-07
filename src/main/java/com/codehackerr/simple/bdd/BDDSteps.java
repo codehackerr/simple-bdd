@@ -25,6 +25,15 @@ class Step {
         step.run();
         return this;
     }
+
+    public Step when(Runnable r) {
+        return new Step(r).run();
+    }
+
+    public Step then(Runnable r) {
+        return new Step(r).run();
+    }
 }
+
 
 
