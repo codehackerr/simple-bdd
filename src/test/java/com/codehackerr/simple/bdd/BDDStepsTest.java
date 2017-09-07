@@ -45,6 +45,7 @@ public class BDDStepsTest {
         verify(steps).step1();
     }
 
+
     interface TestSteps {
         public void step1();
     }

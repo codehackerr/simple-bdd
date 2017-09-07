@@ -1,15 +1,30 @@
 package com.codehackerr.simple.bdd;
 
 public class BDDSteps {
-    static void given(Runnable r) {
-        r.run();
+    static Step given(Runnable r) {
+        return new Step(r).run();
     }
 
     static void when(Runnable r) {
-        r.run();
+        new Step(r).run();
     }
 
     static void then(Runnable r) {
-        r.run();
+        new Step(r).run();
     }
 }
+
+class Step {
+    private final Runnable step;
+
+    public Step(Runnable r) {
+        this.step = r;
+    }
+
+    public Step run() {
+        step.run();
+        return this;
+    }
+}
+
+
