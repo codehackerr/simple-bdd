@@ -8,4 +8,8 @@ public class BDDSteps {
     static void when(Runnable r) {
         r.run();
     }
+
+    static void then(Runnable r) {
+        r.run();
+    }
 }

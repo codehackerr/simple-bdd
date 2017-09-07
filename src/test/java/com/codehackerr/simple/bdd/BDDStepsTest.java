@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static com.codehackerr.simple.bdd.BDDSteps.given;
+import static com.codehackerr.simple.bdd.BDDSteps.then;
 import static com.codehackerr.simple.bdd.BDDSteps.when;
 import static org.mockito.Mockito.verify;
 
@@ -29,6 +30,15 @@ public class BDDStepsTest {
     @Test
     public void when_step_invocation() {
         when(() -> {
+            steps.step1();
+        });
+
+        verify(steps).step1();
+    }
+
+    @Test
+    public void then_step_invocation() {
+        then(() -> {
             steps.step1();
         });
 
