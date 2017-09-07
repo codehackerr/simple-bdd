@@ -2,6 +2,7 @@ apply plugin: 'java-library'
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -13,5 +14,6 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-all:2.0.2-beta'
 }
 
