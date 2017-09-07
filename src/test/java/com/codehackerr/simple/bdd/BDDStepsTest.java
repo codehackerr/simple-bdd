@@ -7,11 +7,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static com.codehackerr.simple.bdd.GivenStep.given;
+import static com.codehackerr.simple.bdd.BDDSteps.given;
+import static com.codehackerr.simple.bdd.BDDSteps.when;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GivenStepTest {
+public class BDDStepsTest {
 
     @Mock
     private TestSteps steps;
@@ -23,9 +24,16 @@ public class GivenStepTest {
         });
 
         verify(steps).step1();
-
     }
 
+    @Test
+    public void when_step_invocation() {
+        when(() -> {
+            steps.step1();
+        });
+
+        verify(steps).step1();
+    }
 
     interface TestSteps {
         public void step1();
