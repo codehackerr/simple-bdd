@@ -44,11 +44,11 @@ class Step {
         return this;
     }
 
-    public Step when(Runnable r) {
+    public Step when(String description, Runnable r) {
         return new Step(description, r).run();
     }
 
-    public Step then(Runnable r) {
+    public Step then(String description, Runnable r) {
         return new Step(description, r).run();
     }
 }

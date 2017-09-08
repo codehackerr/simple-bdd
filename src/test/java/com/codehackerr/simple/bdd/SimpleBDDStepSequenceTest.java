@@ -20,11 +20,11 @@ public class SimpleBDDStepSequenceTest {
     @Test
     public void steps_sequential_invocation() {
 
-        given(
-                "Step 1", () -> steps.step1()
-        ).when(
+        given("Step 1",
+                () -> steps.step1()
+        ).when("Step 2",
                 () -> steps.step2()
-        ).then(
+        ).then("Step 3",
                 () -> steps.step3()
         );
 
@@ -45,11 +45,11 @@ public class SimpleBDDStepSequenceTest {
             assert hello.length() != 0;
             assert world.length() != 0;
 
-        }).when(() -> {
+        }).when("Step 2", () -> {
 
             helloWorld.append(hello).append(world);
 
-        }).then(() -> {
+        }).then("Step 3", () -> {
 
             assertThat(helloWorld.toString(), is("helloworld"));
 
