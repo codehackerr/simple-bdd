@@ -21,7 +21,7 @@ public class BDDStepSequenceTest {
     public void steps_sequential_invocation() {
 
         given(
-                () -> steps.step1()
+                "Step1", () -> steps.step1()
         ).when(
                 () -> steps.step2()
         ).then(
@@ -40,7 +40,7 @@ public class BDDStepSequenceTest {
                 world = "world";
         StringBuilder helloWorld = new StringBuilder();
 
-        given(() -> {
+        given("Step1", () -> {
 
             assert hello.length() != 0;
             assert world.length() != 0;

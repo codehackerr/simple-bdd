@@ -1,23 +1,25 @@
 package com.codehackerr.simple.bdd;
 
 public class BDDSteps {
-    static Step given(Runnable r) {
-        return new Step(r).run();
+    static Step given(String description, Runnable r) {
+        return new Step(description, r).run();
     }
 
-    static void when(Runnable r) {
-        new Step(r).run();
+    static void when(String description, Runnable r) {
+        new Step(description, r).run();
     }
 
-    static void then(Runnable r) {
-        new Step(r).run();
+    static void then(String description, Runnable r) {
+        new Step(description, r).run();
     }
 }
 
 class Step {
+    private String description;
     private final Runnable step;
 
-    public Step(Runnable r) {
+    public Step(String description, Runnable r) {
+        this.description = description;
         this.step = r;
     }
 
@@ -27,11 +29,11 @@ class Step {
     }
 
     public Step when(Runnable r) {
-        return new Step(r).run();
+        return new Step(description, r).run();
     }
 
     public Step then(Runnable r) {
-        return new Step(r).run();
+        return new Step(description, r).run();
     }
 }
 

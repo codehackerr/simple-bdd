@@ -20,7 +20,7 @@ public class BDDStepsTest {
 
     @Test
     public void given_step_invocation() {
-        given(() -> {
+        given("Step1", () -> {
             steps.step1();
         });
 
@@ -29,7 +29,7 @@ public class BDDStepsTest {
 
     @Test
     public void when_step_invocation() {
-        when(() -> {
+        when("Step1", () -> {
             steps.step1();
         });
 
@@ -38,7 +38,7 @@ public class BDDStepsTest {
 
     @Test
     public void then_step_invocation() {
-        then(() -> {
+        then("Step1", () -> {
             steps.step1();
         });
 
