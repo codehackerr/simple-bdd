@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.inOrder;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BDDStepSequenceTest {
+public class SimpleBDDStepSequenceTest {
 
     @Mock
     private TestSteps steps;

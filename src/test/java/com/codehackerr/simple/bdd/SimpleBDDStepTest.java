@@ -13,7 +13,7 @@ import static com.codehackerr.simple.bdd.SimpleBDD.when;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class SimpleBDDTest {
+public class SimpleBDDStepTest {
 
     @Mock
     private TestSteps steps;
