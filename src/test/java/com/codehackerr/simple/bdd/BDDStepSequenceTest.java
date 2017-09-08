@@ -6,7 +6,7 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static com.codehackerr.simple.bdd.BDDSteps.given;
+import static com.codehackerr.simple.bdd.SimpleBDD.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.inOrder;

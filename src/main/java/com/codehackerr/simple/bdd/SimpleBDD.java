@@ -1,6 +1,6 @@
 package com.codehackerr.simple.bdd;
 
-public class BDDSteps {
+public class SimpleBDD {
     static Step given(String description, Runnable r) {
         return new Step(description, r).run();
     }

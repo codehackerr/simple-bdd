@@ -7,13 +7,13 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static com.codehackerr.simple.bdd.BDDSteps.given;
-import static com.codehackerr.simple.bdd.BDDSteps.then;
-import static com.codehackerr.simple.bdd.BDDSteps.when;
+import static com.codehackerr.simple.bdd.SimpleBDD.given;
+import static com.codehackerr.simple.bdd.SimpleBDD.then;
+import static com.codehackerr.simple.bdd.SimpleBDD.when;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BDDStepsTest {
+public class SimpleBDDTest {
 
     @Mock
     private TestSteps steps;
