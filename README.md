@@ -13,16 +13,16 @@ BDD from anywhere unit/integration tests or simply any java code
         String world = "world";
         StringBuilder helloWorld = new StringBuilder();
 
-        given(() -> {
+        given("Two little strings", () -> {
 
             assert hello.length() != 0;
             assert world.length() != 0;
 
-        }).when(() -> {
+        }).when("Appended", () -> {
 
             helloWorld.append(hello).append(world);
 
-        }).then(() -> {
+        }).then("Gives a bigger string!", () -> {
 
             assertThat(helloWorld.toString(), is("helloworld"));
 
