@@ -6,7 +6,6 @@ import java.util.Set;
 public class SimpleBDD {
 
     private static Set<StepLister> listeners = new HashSet<>();
-    private static Reporter reporter;
 
     static Step given(String description, Runnable r) {
         return runStep(description, r);
@@ -27,7 +26,7 @@ public class SimpleBDD {
     }
 
     public static void setReporter(Reporter reporter) {
-        SimpleBDD.reporter = reporter;
+        SimpleBDD.listeners.remove(reporter);
         SimpleBDD.listeners.add(reporter);
     }
 
