@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SimpleBDD {
+
     private static Set<StepLister> listeners = new HashSet<>();
+    private static Reporter reporter;
 
     static Step given(String description, Runnable r) {
         return runStep(description, r);
@@ -15,41 +17,29 @@ public class SimpleBDD {
     }
 
     static void then(String description, Runnable r) {
+
         runStep(description, r);
     }
 
     public static void addStepListener(StepLister stepLister) {
+
         listeners.add(stepLister);
     }
 
+    public static void setReporter(Reporter reporter) {
+        SimpleBDD.reporter = reporter;
+        SimpleBDD.listeners.add(reporter);
+    }
+
     private static Step runStep(String description, Runnable r) {
+
         listeners.forEach(l -> l.start(description));
+
         Step step = new Step(description, r).run();
+
         listeners.forEach(l -> l.finish(description));
+
         return step;
-    }
-}
-
-class Step {
-    private String description;
-    private final Runnable step;
-
-    public Step(String description, Runnable r) {
-        this.description = description;
-        this.step = r;
-    }
-
-    public Step run() {
-        step.run();
-        return this;
-    }
-
-    public Step when(String description, Runnable r) {
-        return new Step(description, r).run();
-    }
-
-    public Step then(String description, Runnable r) {
-        return new Step(description, r).run();
     }
 }
 

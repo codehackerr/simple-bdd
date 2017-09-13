@@ -13,8 +13,11 @@ public class SimpleBddConfigurationTest {
     @Mock
     private StepLister stepLister;
 
+    @Mock
+    private Reporter reporter;
+
     @Test
-    public void step_execution() {
+    public void step_listener_callback() {
         SimpleBDD.addStepListener(stepLister);
 
         SimpleBDD.given("Step 1", () -> {
@@ -23,5 +26,17 @@ public class SimpleBddConfigurationTest {
         InOrder stepLifeCycle = inOrder(stepLister);
         stepLifeCycle.verify(stepLister).start("Step 1");
         stepLifeCycle.verify(stepLister).finish("Step 1");
+    }
+
+    @Test
+    public void reporter_callback() {
+        SimpleBDD.setReporter(reporter);
+
+        SimpleBDD.given("Step 1", () -> {
+        });
+
+        InOrder stepLifeCycle = inOrder(reporter);
+        stepLifeCycle.verify(reporter).start("Step 1");
+        stepLifeCycle.verify(reporter).finish("Step 1");
     }
 }
