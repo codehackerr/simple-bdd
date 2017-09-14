@@ -1,0 +1,12 @@
+testSets {
+    integrationTest { dirName = 'integration-test' }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+
+
+check.dependsOn integrationTest
+integrationTest.mustRunAfter test
