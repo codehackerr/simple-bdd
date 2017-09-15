@@ -37,7 +37,7 @@ public class SimpleBDDIntegrationTest {
 
         verify(dummySystemOut).write(captor.capture(), eq(0), eq(stepStatus.length() + 1));
 
-        // the entire block may be written with 0 values. We are interested only in the real content
+        // the entire block may be written with 0 values for unused characters. We are interested only in the real content
         assertThat(copyOfRange(captor.getValue(), 0, stepStatus.length()), is(stepStatus.getBytes()));
     }
 }
