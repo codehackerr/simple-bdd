@@ -29,5 +29,6 @@ public class Reporter implements StepLister {
     @Override
     public void finish(String description) {
         stream.println("- OK");
+        stream.flush();
     }
 }
