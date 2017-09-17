@@ -33,9 +33,9 @@ public class SimpleBDDIntegrationTest {
         });
 
         //then
-        String stepStatus = "A Step- OK";
+        String stepStatus = "A Step- OK\n";
 
-        verify(dummySystemOut).write(captor.capture(), eq(0), eq(stepStatus.length() + 1));
+        verify(dummySystemOut).write(captor.capture(), eq(0), eq(stepStatus.length()));
 
         // the entire block may be written with 0 values for unused characters. We are interested only in the real content
         assertThat(copyOfRange(captor.getValue(), 0, stepStatus.length()), is(stepStatus.getBytes()));
