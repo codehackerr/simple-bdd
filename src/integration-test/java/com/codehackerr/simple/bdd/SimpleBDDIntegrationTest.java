@@ -33,7 +33,7 @@ public class SimpleBDDIntegrationTest {
         });
 
         //then
-        String stepStatus = "A Step- OK\n";
+        String stepStatus = "Given: A Step- OK\n";
 
         verify(dummySystemOut).write(captor.capture(), eq(0), eq(stepStatus.length()));
 

@@ -30,7 +30,7 @@ public class ReporterTest {
         SimpleBDD.given("Step 1", () -> {
         });
 
-        verify(stream).print("Step 1");
+        verify(stream).print("Given: Step 1");
         verify(stream).println("- OK");
     }
 }

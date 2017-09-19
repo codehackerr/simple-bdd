@@ -24,19 +24,19 @@ public class SimpleBddConfigurationTest {
         });
 
         InOrder stepLifeCycle = inOrder(stepLister);
-        stepLifeCycle.verify(stepLister).start("Step 1", description);
-        stepLifeCycle.verify(stepLister).finish("Step 1", description);
+        stepLifeCycle.verify(stepLister).start("Given", "Step 1");
+        stepLifeCycle.verify(stepLister).finish("Given", "Step 1");
     }
 
     @Test
     public void reporter_callback() {
         SimpleBDD.setReporter(reporter);
 
-        SimpleBDD.given("Step 1", () -> {
+        SimpleBDD.then("Step 2", () -> {
         });
 
         InOrder stepLifeCycle = inOrder(reporter);
-        stepLifeCycle.verify(reporter).start("Step 1", description);
-        stepLifeCycle.verify(reporter).finish("Step 1", description);
+        stepLifeCycle.verify(reporter).start("Then", "Step 2");
+        stepLifeCycle.verify(reporter).finish("Then", "Step 2");
     }
 }
