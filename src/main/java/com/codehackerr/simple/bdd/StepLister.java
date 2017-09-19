@@ -2,7 +2,7 @@ package com.codehackerr.simple.bdd;
 
 public interface StepLister {
 
-    void start(String description);
+    void start(String s, String description);
 
-    void finish(String description);
+    void finish(String s, String description);
 }

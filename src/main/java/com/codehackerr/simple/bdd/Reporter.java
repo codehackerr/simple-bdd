@@ -22,12 +22,12 @@ public class Reporter implements StepLister {
     }
 
     @Override
-    public void start(String description) {
-        stream.print(description);
+    public void start(String stepType, String description) {
+        stream.print(stepType + ": " + description);
     }
 
     @Override
-    public void finish(String description) {
+    public void finish(String stepType, String description) {
         stream.println("- OK");
         stream.flush();
     }

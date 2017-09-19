@@ -24,8 +24,8 @@ public class SimpleBddConfigurationTest {
         });
 
         InOrder stepLifeCycle = inOrder(stepLister);
-        stepLifeCycle.verify(stepLister).start("Step 1");
-        stepLifeCycle.verify(stepLister).finish("Step 1");
+        stepLifeCycle.verify(stepLister).start("Step 1", description);
+        stepLifeCycle.verify(stepLister).finish("Step 1", description);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class SimpleBddConfigurationTest {
         });
 
         InOrder stepLifeCycle = inOrder(reporter);
-        stepLifeCycle.verify(reporter).start("Step 1");
-        stepLifeCycle.verify(reporter).finish("Step 1");
+        stepLifeCycle.verify(reporter).start("Step 1", description);
+        stepLifeCycle.verify(reporter).finish("Step 1", description);
     }
 }
