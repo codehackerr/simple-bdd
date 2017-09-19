@@ -1,0 +1,12 @@
+testSets {
+    examples { dirName = 'examples' }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+
+
+check.dependsOn integrationTest
+examples.mustRunAfter test

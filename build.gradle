@@ -5,6 +5,7 @@ plugins {
 apply plugin: 'java-library'
 
 apply from: "${rootDir}/build-support/integration-test.gradle"
+apply from: "${rootDir}/build-support/examples.gradle"
 
 
 repositories {
