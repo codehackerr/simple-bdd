@@ -15,7 +15,7 @@ public class TestClass {
         String world = "world";
         StringBuilder helloWorld = new StringBuilder();
 
-        given("Two little strings", () -> {
+        given("Two non empty strings", () -> {
 
             assert hello.length() != 0;
             assert world.length() != 0;

@@ -20,10 +20,7 @@ public class TestSuite {
     public static void beforeSuite() {
         SimpleBDD.setReporter(Reporter.Console);
     }
-
 }
-
-
     
 public class TestClass {
 
@@ -34,7 +31,7 @@ public class TestClass {
         String world = "world";
         StringBuilder helloWorld = new StringBuilder();
 
-        given("Two little strings", () -> {
+        given("Two non empty strings", () -> {
 
             assert hello.length() != 0;
             assert world.length() != 0;
@@ -50,5 +47,13 @@ public class TestClass {
         });
     }
 }
-
 ```
+# Console Report:
+```bash
+===========TEST===========
+Given: Two non empty strings- OK
+When: Appended- OK
+Then: Gives a bigger string!- OK
+=========END TEST=========
+```
+
