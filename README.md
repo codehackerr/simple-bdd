@@ -51,10 +51,10 @@ public class TestClass {
 # Console Report:
 ```bash
 ===========================
-Scenario: string_building
+Scenario: append strings
 Given: Two non empty strings- OK
 When: Appended- OK
 Then: Gives a bigger string!- OK
-====== END SCENARIO ======
+====== END SCENARIO =======
 ```
 
