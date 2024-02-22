@@ -1,23 +1,52 @@
-plugins {
-    id "org.unbroken-dome.test-sets" version "1.4.2"
-}
-
-apply plugin: 'java-library'
-
-apply from: "${rootDir}/build-support/integration-test.gradle"
-apply from: "${rootDir}/build-support/examples.gradle"
-
+apply plugin: 'java'
 
 repositories {
-    jcenter()
     mavenCentral()
 }
 
 dependencies {
-
     implementation 'com.google.guava:guava:22.0'
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-all:2.0.2-beta'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.7.0'
+
 }
+
+// integration test configurations
+sourceSets {
+    intTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integration-test/java')
+        }
+    }
+}
+
+configurations {
+    intTestImplementation.extendsFrom testImplementation
+    intTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
+
+
+
+tasks.register('integrationTest', Test) {
+    description = 'Runs integration tests against real persistent stores.'
+    group = 'verification'
+
+    testClassesDirs = sourceSets.intTest.output.classesDirs
+    classpath = sourceSets.intTest.runtimeClasspath
+    shouldRunAfter test
+
+    useJUnitPlatform()
+
+    testLogging {
+        events "passed"
+    }
+}
+
+check.dependsOn integrationTest
+
 

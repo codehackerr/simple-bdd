@@ -3,16 +3,16 @@ package com.codehackerr.simple.bdd;
 import com.codehackerr.simple.bdd.reporter.Reporter;
 import com.codehackerr.simple.bdd.scenario.SimpleBDD;
 import com.codehackerr.simple.bdd.step.StepListner;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static com.codehackerr.simple.bdd.scenario.SimpleBDD.scenario;
 import static org.mockito.Mockito.inOrder;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class SimpleBddConfigurationTest {
     @Mock
     private StepListner stepLister;

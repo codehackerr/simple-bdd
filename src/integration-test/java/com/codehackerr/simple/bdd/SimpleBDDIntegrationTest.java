@@ -2,25 +2,21 @@ package com.codehackerr.simple.bdd;
 
 import com.codehackerr.simple.bdd.reporter.Reporter;
 import com.codehackerr.simple.bdd.scenario.SimpleBDD;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.PrintStream;
 
 import static com.codehackerr.simple.bdd.scenario.SimpleBDD.scenario;
-import static java.util.Arrays.copyOfRange;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.eq;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class SimpleBDDIntegrationTest {
     private final ArgumentCaptor<byte[]> captor = ArgumentCaptor.forClass(byte[].class);
     @Mock

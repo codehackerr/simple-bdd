@@ -2,19 +2,19 @@ package com.codehackerr.simple.bdd;
 
 import com.codehackerr.simple.bdd.reporter.Reporter;
 import com.codehackerr.simple.bdd.scenario.SimpleBDD;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.PrintWriter;
 
 import static com.codehackerr.simple.bdd.scenario.SimpleBDD.scenario;
 import static org.mockito.Mockito.verify;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ReporterTest {
 
     @Mock
@@ -23,7 +23,7 @@ public class ReporterTest {
     @InjectMocks
     private Reporter reporter;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         SimpleBDD.addStepListener(reporter);
     }
