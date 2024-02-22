@@ -1,6 +1,6 @@
-package com.codehackerr.simple.bdd;
+package com.codehackerr.simple.bdd.step;
 
-public interface StepLister {
+public interface StepListner {
 
     void start(String s, String description);
 

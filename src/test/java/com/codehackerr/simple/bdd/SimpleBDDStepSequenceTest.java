@@ -6,7 +6,7 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static com.codehackerr.simple.bdd.SimpleBDD.given;
+import static com.codehackerr.simple.bdd.scenario.SimpleBDD.scenario;
 import static org.mockito.Mockito.inOrder;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -18,7 +18,7 @@ public class SimpleBDDStepSequenceTest {
     @Test
     public void steps_invocation() {
 
-        given("Step 1",
+        scenario("").given("Step 1",
                 () -> steps.step1()
         ).when("Step 2",
                 () -> steps.step2()

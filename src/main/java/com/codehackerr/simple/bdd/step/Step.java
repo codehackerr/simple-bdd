@@ -1,4 +1,6 @@
-package com.codehackerr.simple.bdd;
+package com.codehackerr.simple.bdd.step;
+
+import com.codehackerr.simple.bdd.scenario.Scenario;
 
 import java.util.Set;
 
@@ -11,13 +13,16 @@ public class Step {
     private String stepType;
     private String description;
     private final Runnable body;
-    private Set<StepLister> listeners;
+    private Set<StepListner> listeners;
+    private final Scenario scenario;
 
-    public Step(String stepType, String description, Runnable r, Set<StepLister> listeners) {
+    public Step(String stepType, String description, Runnable r, Set<StepListner> listeners, Scenario scenario) {
         this.stepType = stepType;
         this.description = description;
         this.body = r;
         this.listeners = listeners;
+        this.scenario = scenario;
+        this.scenario.addStep(this);
     }
 
     public Step run() {
@@ -28,12 +33,14 @@ public class Step {
     }
 
     public Step when(String description, Runnable r) {
-
-        return new Step(WHEN, description, r, listeners).run();
+        return new Step(WHEN, description, r, listeners, this.scenario).run();
     }
 
     public Step then(String description, Runnable r) {
+        Step run = new Step(THEN, description, r, listeners, this.scenario).run();
+        scenario.finish();
+        return run;
 
-        return new Step(THEN, description, r, listeners).run();
     }
+
 }

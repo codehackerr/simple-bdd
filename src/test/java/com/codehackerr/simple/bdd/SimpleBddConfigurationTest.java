@@ -1,17 +1,21 @@
 package com.codehackerr.simple.bdd;
 
+import com.codehackerr.simple.bdd.reporter.Reporter;
+import com.codehackerr.simple.bdd.scenario.SimpleBDD;
+import com.codehackerr.simple.bdd.step.StepListner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static com.codehackerr.simple.bdd.scenario.SimpleBDD.scenario;
 import static org.mockito.Mockito.inOrder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SimpleBddConfigurationTest {
     @Mock
-    private StepLister stepLister;
+    private StepListner stepLister;
 
     @Mock
     private Reporter reporter;
@@ -20,7 +24,8 @@ public class SimpleBddConfigurationTest {
     public void step_listener_callback() {
         SimpleBDD.addStepListener(stepLister);
 
-        SimpleBDD.given("Step 1", () -> {
+        scenario("")
+            .given("Step 1", () -> {
         });
 
         InOrder stepLifeCycle = inOrder(stepLister);
@@ -32,7 +37,7 @@ public class SimpleBddConfigurationTest {
     public void reporter_callback() {
         SimpleBDD.setReporter(reporter);
 
-        SimpleBDD.then("Step 2", () -> {
+        scenario("reporter_callback").then("Step 2", () -> {
         });
 
         InOrder stepLifeCycle = inOrder(reporter);

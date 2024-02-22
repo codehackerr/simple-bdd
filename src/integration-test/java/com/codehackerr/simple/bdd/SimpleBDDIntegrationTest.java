@@ -1,5 +1,7 @@
 package com.codehackerr.simple.bdd;
 
+import com.codehackerr.simple.bdd.reporter.Reporter;
+import com.codehackerr.simple.bdd.scenario.SimpleBDD;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -8,10 +10,13 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.PrintStream;
 
-import static com.codehackerr.simple.bdd.SimpleBDD.given;
+import static com.codehackerr.simple.bdd.scenario.SimpleBDD.scenario;
 import static java.util.Arrays.copyOfRange;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 
@@ -28,16 +33,16 @@ public class SimpleBDDIntegrationTest {
         SimpleBDD.setReporter(Reporter.Console);
 
         //when
-        given("A Step", () -> {
+        scenario("test")
+            .given("A Step", () -> {
 
         });
 
         //then
-        String stepStatus = "Given: A Step- OK\n";
+        verify(dummySystemOut).write(captor.capture(), eq(0), anyInt());
 
-        verify(dummySystemOut).write(captor.capture(), eq(0), eq(stepStatus.length()));
-
-        // the entire block may be written with 0 values for unused characters. We are interested only in the real content
-        assertThat(copyOfRange(captor.getValue(), 0, stepStatus.length()), is(stepStatus.getBytes()));
+        String actual = new String(captor.getValue());
+        assertTrue(actual.contains("Scenario: test\n"));
+        assertTrue(actual.contains("Given: A Step- OK\n"));
     }
 }

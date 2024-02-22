@@ -1,7 +1,7 @@
 package com.codehackerr.simple.bdd.examples;
 
-import com.codehackerr.simple.bdd.Reporter;
-import com.codehackerr.simple.bdd.SimpleBDD;
+import com.codehackerr.simple.bdd.reporter.Reporter;
+import com.codehackerr.simple.bdd.scenario.SimpleBDD;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

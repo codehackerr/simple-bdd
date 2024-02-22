@@ -30,30 +30,31 @@ public class TestClass {
         String hello = "hello";
         String world = "world";
         StringBuilder helloWorld = new StringBuilder();
+        scenario("append strings")
+            .given("Two non empty strings", () -> {
 
-        given("Two non empty strings", () -> {
+                assert hello.length() != 0;
+                assert world.length() != 0;
 
-            assert hello.length() != 0;
-            assert world.length() != 0;
+            }).when("Appended", () -> {
 
-        }).when("Appended", () -> {
+                helloWorld.append(hello).append(world);
 
-            helloWorld.append(hello).append(world);
+            }).then("Gives a bigger string!", () -> {
 
-        }).then("Gives a bigger string!", () -> {
+                assertThat(helloWorld.toString(), is("helloworld"));
 
-            assertThat(helloWorld.toString(), is("helloworld"));
-
-        });
+            });
     }
 }
 ```
 # Console Report:
 ```bash
-===========TEST===========
+===========================
+Scenario: string_building
 Given: Two non empty strings- OK
 When: Appended- OK
 Then: Gives a bigger string!- OK
-=========END TEST=========
+====== END SCENARIO ======
 ```
 

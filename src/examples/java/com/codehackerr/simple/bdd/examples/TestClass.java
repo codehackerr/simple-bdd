@@ -2,7 +2,7 @@ package com.codehackerr.simple.bdd.examples;
 
 import org.junit.Test;
 
-import static com.codehackerr.simple.bdd.SimpleBDD.given;
+import static com.codehackerr.simple.bdd.scenario.SimpleBDD.scenario;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -15,19 +15,20 @@ public class TestClass {
         String world = "world";
         StringBuilder helloWorld = new StringBuilder();
 
-        given("Two non empty strings", () -> {
+        scenario("string_building")
+            .given("Two non empty strings", () -> {
 
-            assert hello.length() != 0;
-            assert world.length() != 0;
+                assert hello.length() != 0;
+                assert world.length() != 0;
 
-        }).when("Appended", () -> {
+            }).when("Appended", () -> {
 
-            helloWorld.append(hello).append(world);
+                helloWorld.append(hello).append(world);
 
-        }).then("Gives a bigger string!", () -> {
+            }).then("Gives a bigger string!", () -> {
 
-            assertThat(helloWorld.toString(), is("helloworld"));
+                assertThat(helloWorld.toString(), is("helloworld"));
 
-        });
+            });
     }
 }
